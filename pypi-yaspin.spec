@@ -4,12 +4,13 @@
 #
 Name     : pypi-yaspin
 Version  : 2.1.0
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/6a/b2/144d100c915784ab551e0f7809aaecdd103786a227b0f30db341ffe649be/yaspin-2.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/6a/b2/144d100c915784ab551e0f7809aaecdd103786a227b0f30db341ffe649be/yaspin-2.1.0.tar.gz
 Summary  : Yet Another Terminal Spinner
 Group    : Development/Tools
 License  : MIT
+Requires: pypi-yaspin-license = %{version}-%{release}
 Requires: pypi-yaspin-python = %{version}-%{release}
 Requires: pypi-yaspin-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -20,6 +21,14 @@ BuildRequires : pypi(poetry_core)
 =====================================================================
 ``yaspin``: **Y**\ et **A**\ nother Terminal **Spin**\ ner for Python
 =====================================================================
+
+%package license
+Summary: license components for the pypi-yaspin package.
+Group: Default
+
+%description license
+license components for the pypi-yaspin package.
+
 
 %package python
 Summary: python components for the pypi-yaspin package.
@@ -50,7 +59,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641567936
+export SOURCE_DATE_EPOCH=1649798308
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -65,6 +74,8 @@ python3 -m build --wheel --skip-dependency-check --no-isolation
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-yaspin
+cp %{_builddir}/yaspin-2.1.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-yaspin/48d668453c2ca3acff5ce1a1e1ab5629527fea52
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -72,6 +83,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-yaspin/48d668453c2ca3acff5ce1a1e1ab5629527fea52
 
 %files python
 %defattr(-,root,root,-)
