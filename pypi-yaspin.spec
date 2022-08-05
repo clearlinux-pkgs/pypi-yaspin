@@ -4,7 +4,7 @@
 #
 Name     : pypi-yaspin
 Version  : 2.2.0
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/8a/72/1e48cfce02ae64941973b3c4e8677a45204e9110a4064513cc9e72eb0f63/yaspin-2.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8a/72/1e48cfce02ae64941973b3c4e8677a45204e9110a4064513cc9e72eb0f63/yaspin-2.2.0.tar.gz
 Summary  : Yet Another Terminal Spinner
@@ -45,7 +45,7 @@ Summary: python3 components for the pypi-yaspin package.
 Group: Default
 Requires: python3-core
 Provides: pypi(yaspin)
-Requires: pypi(termcolor_whl)
+Requires: pypi(termcolor)
 
 %description python3
 python3 components for the pypi-yaspin package.
@@ -64,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1659724917
+export SOURCE_DATE_EPOCH=1659731806
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
